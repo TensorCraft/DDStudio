@@ -1,0 +1,51 @@
+{
+    "name": "DDStudio",
+    "version": "0.1.0",
+    "description": "Professional DD Studio",
+    "main": "main.js",
+    "author": "Blocker",
+    "license": "MIT",
+    "Dependencies": {
+        "electron": "^19.0.0",
+        "fs": ""
+    },
+    "scripts": {
+        "start": "electron .",
+        "build": "./node_modules/.bin/electron-builder"
+    },
+    "files": [
+        "./"
+    ],
+    "build": {
+        "productName": "DD Studio",
+        "appId": "ddstudio001",
+        "directories": {
+            "output": "build"
+        },
+        "mac": {
+            "target": "dmg"
+        },
+        "dmg": {
+            "backgroundColor": "#3f3f3f"
+        }
+    },
+    "devDependencies": {
+        "colors-console": "^1.0.3",
+        "electron": "^19.0.17",
+        "electron-builder": "^23.3.3"
+    },
+    "dependencies": {
+        "axios": "^0.27.2",
+        "biliapi": "./lib/biliapi",
+        "flv.js": "^1.6.2",
+        "jimp": "^0.16.2",
+        "live": "./live",
+        "nodejs-websocket": "^1.7.2",
+        "querystring": "^0.2.1",
+        "request": "^2.88.2",
+        "requests": "^0.3.0",
+        "server": "./server",
+        "ws": "^8.8.1",
+        "wss": "^3.3.4"
+    }
+}

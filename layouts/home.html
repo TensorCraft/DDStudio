@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+  <link href="css/home.css" rel="stylesheet" type="text/css" charset="utf-8">
+  <script src="../lib/flv.min.js"></script>
+  <script src="./js/home.js"></script>
+  <meta charset="utf-8">
+  <title>DD Studio</title>
+</head>
+
+<body style="-webkit-app-region: drag">
+
+  <div class="left">
+    <ul class="profile" style="-webkit-app-region: no-drag" id="faceframe">
+      <img class="profile_img" src="./img/noface.jpeg" id="face"></img>
+    </ul>
+    <ul class="navbar1" style="-webkit-app-region: no-drag">
+      <li class="navtab" id="setting"><img src="./img/settings.png"
+          style="width: 34px;height:34px;-webkit-user-drag: none;" /></li>
+      <li class="navtab" id="extenssion"><img src="./img/extension.png"
+          style="width: 34px;height:34px;-webkit-user-drag: none;" /></li>
+      <li class="navtab" id="user"><img src="./img/user.png" style="width: 34px;height:34px;-webkit-user-drag: none;">
+      </li>
+    </ul>
+  </div>
+  <div class="extbar" id="extbar_setting" style="display:none;">
+    <h3 style="padding-left: 10px;padding-top:10px;">设置</h3>
+
+    <div class="extcontent">
+      <h4>主视频设置</h4>
+      <div class="settingitem">
+        <h5>开启回放功能</h5>
+        <label class="switch">
+          <input type="checkbox" id="playback">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <p>开启后主视频将可回放从开始观看后的任意时刻,但也会占用大量运行内存</p>
+      <div class="settingitem">
+        <h5>视频铺满</h5>
+        <label class="switch">
+          <input type="checkbox" id="videofill">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <p>开启后将截取视频中心最大尺寸铺满视频区域,不会有黑边,但是可能无法显示边缘内容</p>
+      <div class="settingitem">
+        <h5>开启追帧</h5>
+        <label class="switch">
+          <input type="checkbox" id="framechase">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <p>此功能可降低直播延迟,但可能导致音画不连续</p>
+      <div class="settingitem">
+        <h5>开启画中画功能</h5>
+        <label class="switch">
+          <input type="checkbox" id="picinpic">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <p>开启后主视频可在独立的悬浮小窗口中播放</p>
+
+      <h4>小视频设置</h4>
+      <div class="settingitem">
+        <h5>默认静音打开</h5>
+        <label class="switch">
+          <input type="checkbox" id="mutestarting">
+          <div class="slider"></div>
+        </label>
+      </div>
+
+      <h4>弹幕设置</h4>
+      <div class="settingitem">
+        <h5>屏蔽红包抽奖信息</h5>
+        <label class="switch">
+          <input type="checkbox" id="blockRedPacketMessage">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <div class="settingitem">
+        <h5>显示礼物信息</h5>
+        <label class="switch">
+          <input type="checkbox" id="showgifts">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <div class="settingitem">
+        <h5>礼物信息自动消失</h5>
+        <label class="switch">
+          <input type="checkbox" id="giftsfade">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <div class="settingitem">
+        <h5>显示用户进入信息</h5>
+        <label class="switch">
+          <input type="checkbox" id="showenteringmsg">
+          <div class="slider"></div>
+        </label>
+      </div>
+
+      <h4>通知设置</h4>
+      <div class="settingitem">
+        <h5>开播通知</h5>
+        <label class="switch">
+          <input type="checkbox" id="liveinform">
+          <div class="slider"></div>
+        </label>
+      </div>
+      <p>当应用窗口关闭,处于托盘图标状态时,通过系统通知提醒关注的开播信息</p>
+
+      <h4>关于</h4>
+      <h5 id="version">当前版本: V0.1.2(内测版本)</h5>
+      <br />
+      <h5>点击检测更新</h5>
+      <br />
+      <h5>作者: Blocker</h5>
+
+      <br />
+
+      <h4>声明</h4>
+      <p>DD Studio是一款开源的专业DD工具,仅作为学习交流用途,不牵扯任何商业行为,软件遵循MIT3.0协议</p>
+      <p style="color:red;">本软件永不存在收费行为,如遭遇收费,则是与作者无关的骗子的违法行为</p>
+      <div class="settingitem">
+        <h5>引用项目:</h5>
+      </div>
+      <p>QRcode.js 链接</p>
+      <p>Bilibili-api-collect 链接</p>
+
+    </div>
+  </div>
+  <div class="extbar" id="extbar_extenssion" style="display: none;">
+    <h3 style="padding-left: 10px;padding-top:10px;">拓展程序</h3>
+    <div class="extcontent">
+      <input type="text" class="extsearch" placeholder="搜索功能或名字">
+    </div>
+  </div>
+  <div class="extbar" id="extbar_user" style="display: none;">
+    <h3 style="padding-left: 10px;padding-top:10px;">用户</h3>
+    <div class="user-item"></div>
+  </div>
+  <div class="right" id="maincontainer">
+    <div class="maincontent" id="maincontent">
+      <div class="video_container" id="video_container">
+        <video id="mainvideo" class="centeredVideo" controls autoplay style="-webkit-app-region: no-drag">视频播放器模块加载失败 ):
+          ,请联系作者进行反馈</video>
+        <div class="movingbar" id="movingbar"></div>
+      </div>
+      <div class="comments_area" id="commentsarea" style="-webkit-app-region: no-drag">
+        <div class="draggingcol" id="drag2"></div>
+        <div class="infobar" id="infobar">
+          <img class="info_face" id="info_face" src="./img/noface.jpeg" />
+          <div class="info_text">
+            <p style="height: 20px;" id="info_uname">未选中主播</p>
+            <p style="height: 20px;" id="info_text">将右下角头像拖拽至上方或右侧区域播放</p>
+          </div>
+        </div>
+        <div class="comments" id="comments">
+        </div>
+        <div class="typing_area">
+          <div class="type_setting">
+            <div style="width: calc(100% - 8px); margin-left: 5px; height: 20px;overflow: hidden;">
+              <div class="textsettingbtn" id="transbtn">同</div>
+              <div class="textsettingbtn" id="fontbtn">字</div>
+            </div>
+            <div style="width: 100%; height: 20px;overflow: hidden;">
+              <select class="medalselect" id="medalselect">
+                <option value="volvo">不佩戴</option>
+                <option value="saab">自动</option>
+              </select>
+            </div>
+          </div>
+          <div class="emojibtn" id="emojibtn">
+            <img src="./img/emoji_fill.png"
+              style="width: 25px; margin-top: calc((100% - 25px) / 2); margin-left: calc((100% - 25px) / 2);" />
+          </div>
+          <div class="typeedit">
+            <textarea class="textedit" id="textedit" onkeydown="checkMsg(event)" placeholder="在这里输入弹幕..."></textarea>
+          </div>
+          <div class="gift" id="giftbtn">
+            <img src="./img/gift.png"
+              style="width: 25px; margin-top: calc((100% - 25px) / 2); margin-left: calc((100% - 25px) / 2);" />
+          </div>
+        </div>
+      </div>
+      <div class="fontbar" id="fontbar" tabindex="1" style="display: none;"></div>
+
+
+      <div class="emojibar" id="emojibar">
+        <select class="emojiselect" id="emojiselect" tabindex="2">
+          <option value="volvo" disabled="true">加载中...</option>
+        </select>
+        <div class="emojilist" id="emojilist2">
+          <div class="loading"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="draggingrow" id="drag1"></div>
+    <div class="secondarycontent" style="-webkit-app-region: no-drag" id="secondarycontent">
+      <div class="ddscreen" id="ddscreen">
+        <div class="ddscreencontainer" id="ddscreencontainer">
+          <i id="videoitemflag"></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      </div>
+      <div class="ddlist_container" id="ddlist_container">
+        <div class="ddlist_Ctrl" id="ddlist_Ctrl">^</div>
+        <div class="ddlist" id="ddlist">
+          <div class="dditem" id="additem">+</div>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
